@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { CSSProperties, Fragment, useEffect, useState } from "react";
 import "./App.css";
+import Countdown from "react-countdown";
 
 function App() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -204,18 +205,105 @@ function App() {
             *在女方家 At bride's home
           </div>
         </div>
-        <div style={{ marginTop: 36 }}>
-          <img className="photo gradient-fade" src="/white-min.jpg" />
+        <div>
+          <img
+            className="photo gradient-fade"
+            src="/white-min.jpg"
+            style={{ borderRadius: "16px" }}
+          />
         </div>
+        <Countdown
+          date={new Date(2022, 10, 26, 10, 0)}
+          renderer={({ days, hours, minutes, seconds }) => {
+            const Box = (props: {
+              amount: number;
+              chinese: string;
+              english: string;
+              gridColumn: number;
+            }) => {
+              return (
+                <Fragment>
+                  <div
+                    style={{
+                      gridColumn: props.gridColumn,
+                      fontSize: 24,
+                      gridRow: 2,
+                    }}
+                  >
+                    {props.amount}
+                  </div>
+                  <div style={{ gridColumn: props.gridColumn, gridRow: 3 }}>
+                    <div>{props.chinese}</div>
+                    <div style={{ fontSize: 8 }}>{props.english}</div>
+                  </div>
+                </Fragment>
+              );
+            };
+            const dividerGridRow = "2 / span 2";
+
+            return (
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr auto 1fr auto 1fr auto 1fr",
+                  gridTemplateRows: "auto 1fr 1fr",
+                  placeItems: "center",
+                  columnGap: 4,
+                  textAlign: "center",
+                }}
+              >
+                <Box amount={days} chinese="天" english="DAYS" gridColumn={1} />
+                <VerticalDivider
+                  style={{ gridColumn: 2, gridRow: dividerGridRow }}
+                />
+                <Box
+                  amount={hours}
+                  chinese="時"
+                  english="HOURS"
+                  gridColumn={3}
+                />
+                <VerticalDivider
+                  style={{ gridColumn: 4, gridRow: dividerGridRow }}
+                />
+                <Box
+                  amount={minutes}
+                  chinese="分"
+                  english="MINUTES"
+                  gridColumn={5}
+                />
+                <VerticalDivider
+                  style={{ gridColumn: 6, gridRow: dividerGridRow }}
+                />
+                <Box
+                  amount={seconds}
+                  chinese="秒"
+                  english="SECONDS"
+                  gridColumn={7}
+                />
+
+                <div
+                  style={{ gridRow: 1, gridColumn: "1 / span 7", fontSize: 12 }}
+                >
+                  倒數 COUNTDOWN
+                </div>
+              </div>
+            );
+          }}
+        />
       </div>
     </div>
   );
 }
 
-const VerticalDivider = () => {
+const VerticalDivider = (props: { style?: CSSProperties }) => {
   return (
     <div
-      style={{ border: "0.5px solid grey", height: "80%", borderRadius: 1 }}
+      style={{
+        border: "0.5px solid grey",
+        height: "80%",
+        borderRadius: 1,
+        ...props.style,
+      }}
     />
   );
 };
