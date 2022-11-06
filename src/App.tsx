@@ -16,7 +16,8 @@ function App() {
     <div
       style={{
         display: "grid",
-        width: "100vw",
+        maxWidth: "600px",
+        justifyContent: "center",
       }}
     >
       <div
