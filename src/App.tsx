@@ -23,7 +23,6 @@ function App() {
       <div
         style={{
           display: "grid",
-          height: "100vh",
           backgroundColor: "antiquewhite",
         }}
       >
@@ -69,7 +68,10 @@ function App() {
               columnGap: 24,
             }}
           >
-            <div>SATURDAY</div>
+            <div style={{ display: "grid", textAlign: "center" }}>
+              <div>星期六 </div>
+              <div>SATURDAY</div>
+            </div>
             <VerticalDivider />
             <div style={{ display: "grid", gap: 12, placeItems: "center" }}>
               <div>NOV 十一月</div>
@@ -77,27 +79,20 @@ function App() {
               <div>2022 年</div>
             </div>
             <VerticalDivider />
-            <div>12:30 PM</div>
-          </div>
 
-          <div style={{ marginTop: 24, marginBottom: 48 }}>
-            <button
-              onClick={() => {
-                document.getElementById("page-2")?.scrollIntoView({
-                  behavior: "smooth",
-                });
-              }}
-            >
-              地點 LOCATION
-            </button>
+            <div style={{ display: "grid", textAlign: "center" }}>
+              <div>中午</div>
+
+              <div>12:30 PM</div>
+            </div>
           </div>
+          <div style={{ height: 24 }} />
         </div>
       </div>
       <div
         id="page-2"
         style={{
           display: "grid",
-          height: "100vh",
           padding: "36px 24px",
           alignContent: "start",
           gap: 36,
@@ -138,17 +133,7 @@ function App() {
             />
           </div>
         </div>
-        <div style={{ marginTop: 36, justifySelf: "center" }}>
-          <button
-            onClick={() => {
-              document.getElementById("page-3")?.scrollIntoView({
-                behavior: "smooth",
-              });
-            }}
-          >
-            行程 ITINERARY
-          </button>
-        </div>
+        <div style={{ height: 16 }} />
       </div>
 
       <div
@@ -187,8 +172,8 @@ function App() {
           </div>
           <div style={{ justifySelf: "end" }}>11:00 AM </div>
           <div>
-            <div> 敬茶（女方）*</div>
-            <div>Tea Ceremony (Bride's Relatives)*</div>
+            <div> 女方家敬茶</div>
+            <div>Tea Ceremony at Bride's House</div>
           </div>
           <div style={{ justifySelf: "end" }}>12:30 PM </div>
           <div>
