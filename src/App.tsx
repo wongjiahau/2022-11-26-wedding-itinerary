@@ -18,6 +18,7 @@ function App() {
         display: "grid",
         maxWidth: "600px",
         justifyContent: "center",
+        color: "black",
       }}
     >
       <div
