@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
 
 function App() {
@@ -39,7 +38,7 @@ function App() {
               YOU ARE INVITED TO THE WEDDING BUFFET OF
             </div>
 
-            <div>誠邀您參與午宴</div>
+            <div>誠邀您參與自助餐</div>
           </div>
           <div>
             <img className="photo" src="/red-min.jpg" />
@@ -87,7 +86,7 @@ function App() {
                 });
               }}
             >
-              地點 Location
+              地點 LOCATION
             </button>
           </div>
         </div>
@@ -104,7 +103,10 @@ function App() {
           overflow: "hidden",
         }}
       >
-        <div style={{ fontSize: 36 }}>地點 Location</div>
+        <div style={{ display: "grid", gap: 24 }}>
+          <div style={{ fontSize: 36 }}>自助餐地點</div>
+          <div style={{ fontSize: 24 }}>Buffet Location</div>
+        </div>
         <div
           style={{
             display: "grid",
@@ -112,8 +114,11 @@ function App() {
             gap: 16,
           }}
         >
-          <div>多功能室 Multi-purpose Room</div>
-          <div>9, Jalan Diamond City, 43500 Semenyih, Selangor</div>
+          <div style={{ display: "grid", gap: 4 }}>
+            <div>Multi-purpose Room, Phoenix Clubhouse</div>
+            <div>9, Jalan Diamond City</div>
+            <div>43500 Semenyih, Selangor</div>
+          </div>
           <div
             style={{
               borderRadius: 16,
@@ -127,7 +132,7 @@ function App() {
               allowFullScreen
               loading="lazy"
               width={screenWidth - 24 * 2}
-              height={screenHeight * 0.5}
+              height={screenHeight * 0.4}
             />
           </div>
         </div>
@@ -139,7 +144,7 @@ function App() {
               });
             }}
           >
-            行程 Itinerary
+            行程 ITINERARY
           </button>
         </div>
       </div>
@@ -159,21 +164,48 @@ function App() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "auto auto",
-            gap: 8,
+            gridTemplateColumns: "auto auto 1fr",
+            gap: 12,
           }}
         >
-          <div>10:00am </div>
-          <div> 接新娘 Bridesmaid Challenge </div>
-          <div>11:00am </div>
-          <div> 敬茶 (女方) Tea Ceremony (Bride's Relatives)</div>
-          <div>12:30pm </div>
-          <div> 自由餐 Buffet</div>
-          <div>4:00pm </div>
-          <div> 結束 The End</div>
+          <div style={{ justifySelf: "end" }}>10:00 AM </div>
+          <div
+            style={{
+              border: "0.5px solid grey",
+              gridColumn: 2,
+              gridRow: "1 / span 4",
+              borderRadius: 1,
+              height: "98%",
+              alignSelf: "center",
+            }}
+          />
+          <div>
+            <div> 接新娘*</div>
+            <div>Bridesmaids' Challenge*</div>
+          </div>
+          <div style={{ justifySelf: "end" }}>11:00 AM </div>
+          <div>
+            <div> 敬茶（女方）*</div>
+            <div>Tea Ceremony (Bride's Relatives)*</div>
+          </div>
+          <div style={{ justifySelf: "end" }}>12:30 PM </div>
+          <div>
+            <div> 自助餐 </div>
+            <div>Buffet</div>
+          </div>
+          <div style={{ justifySelf: "end" }}>4:00 PM </div>
+          <div>
+            <div> 結束</div>
+            <div>The End</div>
+          </div>
+          <div
+            style={{ fontSize: 14, marginTop: 16, gridColumn: "1 / span 3" }}
+          >
+            *在女方家 At bride's home
+          </div>
         </div>
         <div style={{ marginTop: 36 }}>
-          <img className="photo" src="/yellow-min.jpg" />
+          <img className="photo gradient-fade" src="/white-min.jpg" />
         </div>
       </div>
     </div>
