@@ -253,6 +253,7 @@ function App() {
                     columnGap: 4,
                     textAlign: "center",
                     color: "white",
+                    zIndex: 2,
                   }}
                 >
                   <Box
