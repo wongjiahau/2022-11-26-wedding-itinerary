@@ -158,7 +158,7 @@ function App() {
           padding: "36px 24px",
           gap: 36,
           backgroundColor: "snow",
-          alignContent: "start",
+          gridTemplateRows: "auto auto 1fr auto",
         }}
       >
         <div style={{ fontSize: 36 }}>行程 Itinerary</div>
@@ -205,91 +205,115 @@ function App() {
             *在女方家 At bride's home
           </div>
         </div>
-        <div>
-          <img
-            className="photo gradient-fade"
-            src="/white-min.jpg"
-            style={{ borderRadius: "16px" }}
-          />
-        </div>
-        <Countdown
-          date={new Date(2022, 10, 26, 10, 0)}
-          renderer={({ days, hours, minutes, seconds }) => {
-            const Box = (props: {
-              amount: number;
-              chinese: string;
-              english: string;
-              gridColumn: number;
-            }) => {
+        <div
+          style={{
+            display: "grid",
+            alignContent: "start",
+            padding: "16px 8px",
+            position: "relative",
+            zIndex: 2,
+          }}
+        >
+          <Countdown
+            date={new Date(2022, 10, 26, 10, 0)}
+            renderer={({ days, hours, minutes, seconds }) => {
+              const Box = (props: {
+                amount: number;
+                chinese: string;
+                english: string;
+                gridColumn: number;
+              }) => {
+                return (
+                  <Fragment>
+                    <div
+                      style={{
+                        gridColumn: props.gridColumn,
+                        fontSize: 24,
+                        gridRow: 2,
+                      }}
+                    >
+                      {props.amount}
+                    </div>
+                    <div style={{ gridColumn: props.gridColumn, gridRow: 3 }}>
+                      <div>{props.chinese}</div>
+                      <div style={{ fontSize: 8 }}>{props.english}</div>
+                    </div>
+                  </Fragment>
+                );
+              };
+              const dividerGridRow = "2 / span 2";
+
               return (
-                <Fragment>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr auto 1fr auto 1fr auto 1fr",
+                    gridTemplateRows: "auto 1fr 1fr",
+                    placeItems: "center",
+                    columnGap: 4,
+                    textAlign: "center",
+                    color: "white",
+                  }}
+                >
+                  <Box
+                    amount={days}
+                    chinese="天"
+                    english="DAYS"
+                    gridColumn={1}
+                  />
+                  <VerticalDivider
+                    style={{ gridColumn: 2, gridRow: dividerGridRow }}
+                  />
+                  <Box
+                    amount={hours}
+                    chinese="時"
+                    english="HOURS"
+                    gridColumn={3}
+                  />
+                  <VerticalDivider
+                    style={{ gridColumn: 4, gridRow: dividerGridRow }}
+                  />
+                  <Box
+                    amount={minutes}
+                    chinese="分"
+                    english="MINUTES"
+                    gridColumn={5}
+                  />
+                  <VerticalDivider
+                    style={{ gridColumn: 6, gridRow: dividerGridRow }}
+                  />
+                  <Box
+                    amount={seconds}
+                    chinese="秒"
+                    english="SECONDS"
+                    gridColumn={7}
+                  />
+
                   <div
                     style={{
-                      gridColumn: props.gridColumn,
-                      fontSize: 24,
-                      gridRow: 2,
+                      gridRow: 1,
+                      gridColumn: "1 / span 7",
+                      fontSize: 12,
                     }}
                   >
-                    {props.amount}
+                    倒數 COUNTDOWN
                   </div>
-                  <div style={{ gridColumn: props.gridColumn, gridRow: 3 }}>
-                    <div>{props.chinese}</div>
-                    <div style={{ fontSize: 8 }}>{props.english}</div>
-                  </div>
-                </Fragment>
-              );
-            };
-            const dividerGridRow = "2 / span 2";
-
-            return (
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr auto 1fr auto 1fr auto 1fr",
-                  gridTemplateRows: "auto 1fr 1fr",
-                  placeItems: "center",
-                  columnGap: 4,
-                  textAlign: "center",
-                }}
-              >
-                <Box amount={days} chinese="天" english="DAYS" gridColumn={1} />
-                <VerticalDivider
-                  style={{ gridColumn: 2, gridRow: dividerGridRow }}
-                />
-                <Box
-                  amount={hours}
-                  chinese="時"
-                  english="HOURS"
-                  gridColumn={3}
-                />
-                <VerticalDivider
-                  style={{ gridColumn: 4, gridRow: dividerGridRow }}
-                />
-                <Box
-                  amount={minutes}
-                  chinese="分"
-                  english="MINUTES"
-                  gridColumn={5}
-                />
-                <VerticalDivider
-                  style={{ gridColumn: 6, gridRow: dividerGridRow }}
-                />
-                <Box
-                  amount={seconds}
-                  chinese="秒"
-                  english="SECONDS"
-                  gridColumn={7}
-                />
-
-                <div
-                  style={{ gridRow: 1, gridColumn: "1 / span 7", fontSize: 12 }}
-                >
-                  倒數 COUNTDOWN
                 </div>
-              </div>
-            );
-          }}
-        />
+              );
+            }}
+          />
+
+          <img
+            src="/white-min.jpg"
+            style={{
+              position: "absolute",
+              borderRadius: 16,
+              width: "100%",
+              filter: "blur(1px)",
+            }}
+          />
+        </div>
+        <div />
       </div>
     </div>
   );
