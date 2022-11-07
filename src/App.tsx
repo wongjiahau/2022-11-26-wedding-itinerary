@@ -35,7 +35,14 @@ function App() {
             alignContent: "start",
           }}
         >
-          <div style={{ display: "grid", marginTop: 36, textAlign: "center" }}>
+          <div
+            style={{
+              display: "grid",
+              marginTop: 36,
+              textAlign: "center",
+              padding: "0 24px",
+            }}
+          >
             <div style={{ fontSize: 12 }}>
               YOU ARE INVITED TO THE WEDDING BUFFET OF
             </div>
@@ -67,15 +74,21 @@ function App() {
               gridTemplateColumns: "1fr auto 1fr auto 1fr",
               placeItems: "center",
               columnGap: 24,
+              padding: "0 24px",
+              whiteSpace: "nowrap",
             }}
           >
             <div style={{ display: "grid", textAlign: "center" }}>
               <div>星期六 </div>
-              <div>SATURDAY</div>
+              <div style={{ fontSize: 12 }}>SATURDAY</div>
             </div>
             <VerticalDivider />
-            <div style={{ display: "grid", gap: 12, placeItems: "center" }}>
-              <div>NOV 十一月</div>
+            <div style={{ display: "grid", gap: 16, placeItems: "center" }}>
+              <div style={{ display: "grid", placeItems: "center" }}>
+                <div> 11 月</div>
+                <div style={{ fontSize: 12 }}>NOVEMBER</div>
+              </div>
+
               <div style={{ fontSize: 36 }}>26 日</div>
               <div>2022 年</div>
             </div>
@@ -84,7 +97,8 @@ function App() {
             <div style={{ display: "grid", textAlign: "center" }}>
               <div>中午</div>
 
-              <div>12:30 PM</div>
+              <div>12:30</div>
+              <div style={{ fontSize: 12 }}> PM</div>
             </div>
           </div>
           <div style={{ height: 24 }} />
@@ -141,7 +155,6 @@ function App() {
         id="page-3"
         style={{
           display: "grid",
-          height: "100vh",
           padding: "36px 24px",
           gap: 36,
           backgroundColor: "snow",
@@ -197,7 +210,6 @@ function App() {
             display: "grid",
             alignContent: "start",
             padding: "16px 8px",
-            position: "relative",
             zIndex: 2,
           }}
         >
@@ -209,21 +221,21 @@ function App() {
                 chinese: string;
                 english: string;
                 gridColumn: number;
+                gridRow: number;
               }) => {
                 return (
                   <Fragment>
                     <div
                       style={{
                         gridColumn: props.gridColumn,
-                        fontSize: 24,
-                        gridRow: 2,
+                        gridRow: props.gridRow,
                       }}
                     >
-                      {props.amount}
-                    </div>
-                    <div style={{ gridColumn: props.gridColumn, gridRow: 3 }}>
-                      <div>{props.chinese}</div>
-                      <div style={{ fontSize: 8 }}>{props.english}</div>
+                      <div style={{ display: "grid", gap: 2 }}>
+                        <div>{props.chinese}</div>
+                        <div style={{ fontSize: 24 }}>{props.amount}</div>
+                        <div style={{ fontSize: 8 }}>{props.english}</div>
+                      </div>
                     </div>
                   </Fragment>
                 );
@@ -234,13 +246,16 @@ function App() {
                 <div
                   style={{
                     display: "grid",
-                    gridTemplateColumns: "1fr auto 1fr auto 1fr auto 1fr",
-                    gridTemplateRows: "auto 1fr 1fr",
+                    rowGap: 16,
                     placeItems: "center",
                     columnGap: 4,
                     textAlign: "center",
                     color: "white",
+                    gridColumn: 1,
+                    gridRow: 1,
                     zIndex: 2,
+                    padding: 16,
+                    alignContent: "center",
                   }}
                 >
                   <Box
@@ -248,44 +263,29 @@ function App() {
                     chinese="天"
                     english="DAYS"
                     gridColumn={1}
-                  />
-                  <VerticalDivider
-                    style={{ gridColumn: 2, gridRow: dividerGridRow }}
+                    gridRow={1}
                   />
                   <Box
                     amount={hours}
                     chinese="時"
                     english="HOURS"
-                    gridColumn={3}
-                  />
-                  <VerticalDivider
-                    style={{ gridColumn: 4, gridRow: dividerGridRow }}
+                    gridColumn={1}
+                    gridRow={2}
                   />
                   <Box
                     amount={minutes}
                     chinese="分"
                     english="MINUTES"
-                    gridColumn={5}
-                  />
-                  <VerticalDivider
-                    style={{ gridColumn: 6, gridRow: dividerGridRow }}
+                    gridColumn={3}
+                    gridRow={1}
                   />
                   <Box
                     amount={seconds}
                     chinese="秒"
                     english="SECONDS"
-                    gridColumn={7}
+                    gridColumn={3}
+                    gridRow={2}
                   />
-
-                  <div
-                    style={{
-                      gridRow: 1,
-                      gridColumn: "1 / span 7",
-                      fontSize: 12,
-                    }}
-                  >
-                    倒數 COUNTDOWN
-                  </div>
                 </div>
               );
             }}
@@ -294,14 +294,14 @@ function App() {
           <img
             src="/white-min.jpg"
             style={{
-              position: "absolute",
+              gridColumn: 1,
+              gridRow: 1,
               borderRadius: 16,
               width: "100%",
-              filter: "blur(1px)",
+              filter: "brightness(80%)",
             }}
           />
         </div>
-        <div />
       </div>
     </div>
   );
