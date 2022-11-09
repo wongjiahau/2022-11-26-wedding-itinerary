@@ -43,11 +43,10 @@ function App() {
               padding: "0 24px",
             }}
           >
+            <div>誠邀您參與自助餐</div>
             <div style={{ fontSize: 12 }}>
               YOU ARE INVITED TO THE WEDDING BUFFET OF
             </div>
-
-            <div>誠邀您參與自助餐</div>
           </div>
           <div>
             <img className="photo" src="/red-min.jpg" />
